@@ -12,12 +12,6 @@ body {
   width:100vw;
 }
 
-#choose-your-destiny {
-  font-size: 1.5em;
-  height:100vh;
-  width:100vw;
-}
-
 h1 {
   font-size: 2em;
 }
@@ -40,11 +34,9 @@ h1 {
 #musician {
   min-height: 100vh;
   width: 100vw;
-  font-size: 1.5em;
 }
 
 #programmer {
   min-height: 100vh;
   width: 100vw;
-  font-size: 1.5em;
 }
