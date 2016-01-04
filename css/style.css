@@ -31,12 +31,7 @@ h1 {
   fill: #ff4136;
 }
 
-#musician {
-  min-height: 100vh;
-  width: 100vw;
-}
-
-#programmer {
+#composer, #programmer {
   min-height: 100vh;
   width: 100vw;
 }
