@@ -40,3 +40,8 @@ h1 {
   padding-bottom: 1em;
   border-bottom: 1px solid;
 }
+
+.mxauto {
+  margin-left: auto;
+  margin-right: auto;
+}
