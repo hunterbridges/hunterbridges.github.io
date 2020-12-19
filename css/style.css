@@ -6,6 +6,10 @@ body {
   font-weight: 300;
 }
 
+#gm_randomizer {
+  font-size: 1.5em;
+}
+
 #choose-your-destiny {
   font-size: 1.5em;
   height:100vh;
