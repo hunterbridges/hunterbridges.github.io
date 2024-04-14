@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ROM Randomizer, by Hunter Bridges</title>
+
+    <meta charset="UTF-8">
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/basscss.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header>
+    </header>
+
+    <div id="rom_randomizer" class="red bg-white center">
+      <div>
+        <div class="m2">
+            <h1 class="m0">ROM Randomizer</h1>
+            <h2 class="m0" style="font-weight:normal;">by <a href="index.html">Hunter Bridges</a></h2>
+        </div>
+        <p class="m2 col-6 mxauto">
+            This page generates a random list of 5 ROMs from different systems for when you
+            don't know what to play
+        </p>
+
+        <table id="channels" cellpadding="1" border="1" class="col-6 mxauto">
+            <thead class="bold">
+                <tr>
+                    <td width="64">#</td>
+                    <td width="128">System</td>
+                    <td>Game Title</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr id="channel-01"> <td>1</td> <td class="system-name">---</td> <td class="game-title">---</td> </tr>
+                <tr id="channel-02"> <td>2</td> <td class="system-name">---</td> <td class="game-title">---</td> </tr>
+                <tr id="channel-03"> <td>3</td> <td class="system-name">---</td> <td class="game-title">---</td> </tr>
+                <tr id="channel-04"> <td>4</td> <td class="system-name">---</td> <td class="game-title">---</td> </tr>
+                <tr id="channel-05"> <td>5</td> <td class="system-name">---</td> <td class="game-title">---</td> </tr>
+            </tbody>
+        </table>
+
+        <div class="col-6 m2 mxauto text-center">
+            <button id="roll">Roll it!</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/rom_randomizer_data.js"></script>
+    <script src="js/rom_randomizer.js"></script>
+  </body>
+</html>
