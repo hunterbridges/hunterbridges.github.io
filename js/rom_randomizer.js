@@ -4,14 +4,16 @@ document.addEventListener("DOMContentLoaded", function() {
     var systemNameCells = document.getElementsByClassName("system-name");
     var gameTitleCells = document.getElementsByClassName("game-title");
 
+    var selectAllSysButton = document.getElementById("sys_select_all");
+    var selectNoneSysButton = document.getElementById("sys_select_none");
+
     var timers = new Array(5);
     var systems = new Array(5);
     var titles = new Array(5);
+    var useSystems = [];
     var started = false;
     var finished = false;
     var interval = null;
-
-    var systemKeys = Object.keys(randomizerData);
 
     function rollStep(e) {
         var live = false;
@@ -34,11 +36,11 @@ document.addEventListener("DOMContentLoaded", function() {
                 var unique = false;
                 while (unique === false)
                 {
-                    randIndex = Math.round(Math.random() * (systemKeys.length - 1));
-                    systemName = systemKeys[randIndex];
+                    randIndex = Math.round(Math.random() * (useSystems.length - 1));
+                    systemName = useSystems[randIndex];
 
                     unique = true;
-                    for (var j = 0; j < i; j++)
+                    for (var j = 0; j < i && useSystems.length >= 5; j++)
                     {
                         if (systemName !== systems[j])
                             continue;
@@ -69,8 +71,8 @@ document.addEventListener("DOMContentLoaded", function() {
             }
             else
             {
-                randIndex = Math.round(Math.random() * (systemKeys.length - 1));
-                systemName = systemKeys[randIndex];
+                randIndex = Math.round(Math.random() * (useSystems.length - 1));
+                systemName = useSystems[randIndex];
 
                 var gameList = randomizerData[systemName];
                 randIndex = Math.round(Math.random() * (gameList.length - 1));
@@ -97,6 +99,20 @@ document.addEventListener("DOMContentLoaded", function() {
         started = true;
         finished = false;
 
+        useSystems = [];
+
+        // Build array of systems ot use
+        var query = document.getElementsByClassName("system_check");
+        for (let i = 0; i < query.length; i++)
+        {
+            if (query[i].checked)
+                useSystems.push(query[i].getAttribute("name"));
+        }
+
+        if (useSystems.length == 0)
+            for (let i = 0; i < query.length; i++)
+                useSystems.push(query[i].getAttribute("name"));
+
         for (var i = 0; i < 16; i++)
         {
             timers[i] = 1000 + (i * 150);
@@ -108,4 +124,16 @@ document.addEventListener("DOMContentLoaded", function() {
     };
 
     rollButton.addEventListener("click", startRoll);
+
+    selectAllSysButton.addEventListener("click", function(e) {
+        var query = document.getElementsByClassName("system_check");
+        for (let i = 0; i < query.length; i++)
+            query[i].checked = true;
+    });
+
+    selectNoneSysButton.addEventListener("click", function(e) {
+        var query = document.getElementsByClassName("system_check");
+        for (let i = 0; i < query.length; i++)
+            query[i].checked = false;
+    });
 });
