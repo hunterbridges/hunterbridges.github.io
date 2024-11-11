@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
+    var rng = new RNG(Date.now().toString());
     var rollButton = document.getElementById("roll");
 
     var systemNameCells = document.getElementsByClassName("system-name");
@@ -14,6 +15,12 @@ document.addEventListener("DOMContentLoaded", function() {
     var started = false;
     var finished = false;
     var interval = null;
+
+    function getRandomIndex(listLength)
+    {
+        var randIndex = rng.random(0, listLength);
+        return randIndex;
+    }
 
     function rollStep(e) {
         var live = false;
@@ -36,7 +43,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 var unique = false;
                 while (unique === false)
                 {
-                    randIndex = Math.round(Math.random() * (useSystems.length - 1));
+                    randIndex = getRandomIndex(useSystems.length);
                     systemName = useSystems[randIndex];
 
                     unique = true;
@@ -55,7 +62,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 unique = false;
                 while (unique === false)
                 {
-                    randIndex = Math.round(Math.random() * (gameList.length - 1));
+                    randIndex = getRandomIndex(gameList.length);
                     gameTitle = gameList[randIndex];
 
                     unique = true;
@@ -71,11 +78,11 @@ document.addEventListener("DOMContentLoaded", function() {
             }
             else
             {
-                randIndex = Math.round(Math.random() * (useSystems.length - 1));
+                randIndex = getRandomIndex(useSystems.length);
                 systemName = useSystems[randIndex];
 
                 var gameList = randomizerData[systemName];
-                randIndex = Math.round(Math.random() * (gameList.length - 1));
+                randIndex = getRandomIndex(gameList.length);
                 gameTitle = gameList[randIndex];
             }
 
@@ -95,6 +102,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function startRoll(e) {
         if (started == true && finished == false) return;
+
+        rng = new RNG(Date.now().toString());
 
         started = true;
         finished = false;

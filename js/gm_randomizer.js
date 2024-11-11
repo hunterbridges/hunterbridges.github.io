@@ -160,6 +160,7 @@ var drumPrograms = {
 var anchorRegex = /#([A-Za-z0-9_,]*)$/;
 
 document.addEventListener("DOMContentLoaded", function() {
+    var rng = new RNG(Date.now().toString());
     var rollButton = document.getElementById("roll");
     var dlLink = document.getElementById("dl-link");
     var dlButton = document.getElementById("download");
@@ -177,6 +178,12 @@ document.addEventListener("DOMContentLoaded", function() {
     var drumProgKeys = Object.keys(drumPrograms);
 
     var blobURL = null;
+
+    function getRandomIndex(listLength)
+    {
+        var randIndex = rng.random(0, listLength);
+        return randIndex;
+    }
 
     function generateFile(selections) {
         var bin = new BinString();
@@ -313,7 +320,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 var unique = false;
                 while (unique === false)
                 {
-                    randIndex = Math.round(Math.random() * keys.length);
+                    randIndex = getRandomIndex(keys.length);
                     progNumber = keys[randIndex];
 
                     unique = true;
@@ -332,7 +339,7 @@ document.addEventListener("DOMContentLoaded", function() {
             }
             else
             {
-                randIndex = Math.round(Math.random() * keys.length);
+                randIndex = getRandomIndex(keys.length);
                 progNumber = keys[randIndex];
             }
 
@@ -357,6 +364,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function startRoll(e) {
         if (started == true && finished == false) return;
+
+        rng = new RNG(Date.now().toString());
 
         started = true;
         finished = false;
