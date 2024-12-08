@@ -110,7 +110,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         useSystems = [];
 
-        // Build array of systems ot use
+        // Build array of systems to use
         var query = document.getElementsByClassName("system_check");
         for (let i = 0; i < query.length; i++)
         {
